@@ -34,6 +34,8 @@ public class Item {
             return "Defense";
         if(type == 'u')
             return "Utility";
+        if(type == 'r')
+            return "Recovery";
 
         return null;
     }
