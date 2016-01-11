@@ -4,6 +4,9 @@ import java.util.Scanner;
  * Created by Corey on 1/10/16.
  */
 public class Driver {
+
+<<<<<<< HEAD
+=======
     public static void main(String[] args) {
         //TODO: Have a segment to load save files
         //
@@ -31,4 +34,7 @@ public class Driver {
         }
 
     }
+
+
+>>>>>>> 8d7c768cf470b9d3253b368a605c7c5e54e40604
 }
