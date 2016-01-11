@@ -10,8 +10,9 @@ public class Skill {
     public int ATK;
     public int DEF;
     public int SP_COST;
+    public int DURATION;
 
-    Skill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST) {
+    Skill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST, int duration) {
         this.name = name;
         this.DESCRIPTION = DESCRIPTION;
         this.TYPE = TYPE;
