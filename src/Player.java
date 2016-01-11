@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public class Player extends Person {
     ArrayList<String> ITEMS = new ArrayList<>();
     public Player() {
-        super("Corey", 1, 1, 1, 1);
+        super("Corey",1, 1, 1, 1, 1);
     }
 
-    public Player(String name, int HP, int ATK, int DEF, int AGI) {
-        super(name, HP, ATK, DEF, AGI);
+    public Player(String name, int level,  int HP, int ATK, int DEF, int AGI) {
+        super(name, level, HP, ATK, DEF, AGI);
     }
 }
