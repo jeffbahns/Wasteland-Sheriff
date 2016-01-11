@@ -6,12 +6,12 @@ public class Enemy extends Person {
 
 
     public Enemy() {
-        super("Bob",1, 1,1,1,1);
+        super("Bob",1, 1,1,1,1, new SkillContainer());
         this.type = "Goblin";
     }
 
-    public Enemy(String name, int level, int HP, int ATK, int DEF, int AGI, String type) {
-        super(name, level, HP, ATK, DEF, AGI);
+    public Enemy(String name, int level, int HP, int ATK, int DEF, int AGI, String type, SkillContainer SKILLS) {
+        super(name, level, HP, ATK, DEF, AGI, SKILLS);
         this.type = type;
     }
 }

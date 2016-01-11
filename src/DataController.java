@@ -5,7 +5,6 @@ public class DataController {
 
     Player player;
     Enemy enemy;
-
     private static DataController instance = null;
 
     protected DataController(){}
@@ -20,8 +19,12 @@ public class DataController {
 
 
     public void start() {
-        this.player = new Player("Corey", 1, 10, 3, 3, 3);
-        this.enemy = new Enemy("Gobby", 1, 10, 3, 3, 3, "Goblin");
+        SkillContainer SKILLS = new SkillContainer();
+        SKILLS.addSkill("Frost Dick", "Sends a snowy frostball straight to the enemy's foreskin", 'O', 5, 0, 3);
+        SKILLS.addSkill("6 Shootin' Madness", "Unload all 6 bullets of your six shooter onto any Godless sack of shit who crosses your path", 'O', 6, 0, 4);
+        SKILLS.addSkill("Huddle like a bitch", "Assume fetal position and hope you don't take too much damage", 'D', 0, 2, 1);
+        this.player = new Player("Corey", 1, 10, 3, 3, 3, SKILLS);
+        this.enemy = new Enemy("Gobby", 1, 10, 3, 3, 3, "Goblin", SKILLS);
     }
 
 

@@ -13,9 +13,11 @@ public class Person {
     public int ATK;
     public int DEF;
     public int AGI;
+    public int SP;
+    public SkillContainer SKILLS;
 
     // default constructor
-    Person( String name, int level, int HP, int ATK, int DEF, int AGI ) {
+    Person( String name, int level, int HP, int ATK, int DEF, int AGI, SkillContainer SKILLS ) {
 
         this.name = name;
         this.level = level;
@@ -23,7 +25,7 @@ public class Person {
         this.ATK = ATK;
         this.DEF = DEF;
         this.AGI = AGI;
-
+        this.SKILLS = SKILLS;
         System.out.println("A person was created");
     }
 
@@ -51,6 +53,12 @@ public class Person {
         System.out.println(name + "'s AGI was affected by " + change + "!");
     }
 
+    // changes SP, can be +/- change
+    public void affectSP( int change ) {
+        this.SP += change;
+        System.out.println(name + "'s SP was affected by " + change + "!");
+    }
+
     public void print() {
         System.out.println("---------");
         System.out.println(name);
@@ -59,6 +67,7 @@ public class Person {
         System.out.println("ATK : " + ATK);
         System.out.println("DEF : " + DEF);
         System.out.println("AGI : " + AGI);
+        System.out.println("SP : " + SP);
         System.out.println("---------");
     }
 

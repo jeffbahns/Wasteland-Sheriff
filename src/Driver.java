@@ -37,6 +37,8 @@ public class Driver {
                     encounter = new Encounter(dataController.getPlayer(),dataController.getEnemy());
                     encounter.startFight();
                     break;
+                case 3: // View Menu TODO: create menu class
+
             }
         }
     }

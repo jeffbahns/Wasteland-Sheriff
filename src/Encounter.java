@@ -27,15 +27,9 @@ public class Encounter {
 
         //Loop until end of fight;
         while(true) {
-            try {
-                Runtime.getRuntime().exec("cls");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
             printStats();
             if(turnOrder) {
                 playerTurn();
-
             } else {
                 //TODO: More dynamic enemy AI
                 enemyTurn();
