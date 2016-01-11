@@ -4,6 +4,7 @@
 public class Encounter {
     //public Player player;
     //public ArrayList<Enemy> enemies;
+    //public int[] turnOrder
 
 
     public Encounter(/* Player player, Arraylist<Enemy> enemies*/) {
@@ -19,9 +20,17 @@ public class Encounter {
         //Loop until end of fight;
         while(true) {
             //Roll for who goes first
+            //TODO: determine turn order
+
+
+
             break;
         }
 
         return false;
+    }
+
+    private void determineOrder() {
+
     }
 }
