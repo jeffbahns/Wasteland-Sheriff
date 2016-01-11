@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by jeffbahns on 1/10/16.
  */
@@ -12,7 +14,6 @@ public class Person {
     public int DEF;
     public int AGI;
 
-    // default constructor
     Person( String name, int HP, int ATK, int DEF, int AGI ) {
         this.name = name;
         this.HP = HP;
@@ -26,20 +27,36 @@ public class Person {
     // changes HP, can be +/- change
     public void affectHP( int change ) {
         this.HP += change;
+        System.out.println(name + "'s HP was affected by " + change + "!");
     }
 
     // changes ATK, can be +/- change
     public void affectATK( int change ) {
         this.ATK += change;
+        System.out.println(name + "'s ATK was affected by " + change + "!");
     }
 
     // changes DEF, can be +/- change
     public void affectDEF( int change ) {
         this.DEF += change;
+        System.out.println(name + "'s DEF was affected by " + change + "!");
     }
 
     // changes AGI, can be +/- change
     public void affectAGI( int change ) {
         this.AGI += change;
+        System.out.println(name + "'s AGI was affected by " + change + "!");
     }
+
+    public void print() {
+        System.out.println("---------");
+        System.out.println(name);
+        System.out.println("- - -");
+        System.out.println("HP : " + HP);
+        System.out.println("ATK : " + ATK);
+        System.out.println("DEF : " + DEF);
+        System.out.println("AGI : " + AGI);
+        System.out.println("---------");
+    }
+
 }

@@ -4,6 +4,7 @@ import java.util.Scanner;
  * Created by Corey on 1/10/16.
  */
 public class Driver {
+
     public static void main(String[] args) {
         //TODO: Have a segment to load save files
         //
@@ -13,6 +14,7 @@ public class Driver {
 
     }
 
+    // initial state of game
     public static void runGame() {
         Encounter encounter;
         Scanner scan = new Scanner( System.in);
@@ -33,6 +35,6 @@ public class Driver {
                     break;
             }
         }
-
     }
+
 }

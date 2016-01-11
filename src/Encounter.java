@@ -23,26 +23,22 @@ public class Encounter {
     public void startFight() {
         //Roll for who goes first
         turnOrder = determineOrder();
+
         //Loop until end of fight;
         while(true) {
+
             if(turnOrder) {
                 playerTurn();
-                if(isDead())
-                    break;
-                //Set to false for enemy
-                turnOrder = false;
 
             } else {
                 //TODO: More dynamic enemy AI
                 enemyTurn();
-                if(isDead())
-                    break;
-                //Set back to true for player
-                turnOrder = true;
             }
+
+            if(isDead())
+                break;
+            turnOrder = !turnOrder;
         }
-
-
     }
 
     private boolean determineOrder() {
@@ -84,21 +80,34 @@ public class Encounter {
         } while(response > 3 || response < 1);
 
         switch (response) {
+
             //Attack
             case 1:
                 System.out.println("Attacks for 1");
-                this.enemy.HP--;
+                this.enemy.affectHP(-3);
                 break;
+
             //Defend
             case 2:
                 break;
-            //Run
+
+            //Items
             case 3:
+                break;
+
+            //Run
+            case 4:
                 break;
         }
     }
 
     private void enemyTurn() {
-        this.player.HP--;
+        this.player.affectHP(-1);
     }
+
+    private void printStats() {
+        this.player.print();
+        this.enemy.print();
+    }
+
 }
