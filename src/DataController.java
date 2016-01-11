@@ -22,6 +22,8 @@ public class DataController {
     public void start() {
         this.player = new Player("Corey", 1, 10, 3, 3, 3);
         this.enemy = new Enemy("Gobby", 1, 10, 3, 3, 3, "Goblin");
+
+        player.Items.add(new Item("Horn of Eld", "Blow this and unleash the wrath of the ancient gunslinger Arthur of Eld", 'o'));
     }
 
 

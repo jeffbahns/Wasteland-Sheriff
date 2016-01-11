@@ -4,7 +4,9 @@ import java.util.Scanner;
 /**
  * Created by Corey on 1/10/16.
  */
-public class Driver {
+public class
+
+        Driver {
 
     public static void main(String[] args) {
 
