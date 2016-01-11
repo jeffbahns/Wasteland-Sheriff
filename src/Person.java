@@ -5,7 +5,10 @@ import java.util.ArrayList;
  */
 
 // This is the base class for NPC's, enemies, etc
-public class Person {
+public class
+
+
+        Person {
 
     public String name;
     public int level;

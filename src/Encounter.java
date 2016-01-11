@@ -77,7 +77,7 @@ public class Encounter {
 
         do {
             System.out.println("Please enter your command");
-            System.out.println("1. Attack \n2. Defend \n3. Run");
+            System.out.println("1. Attack \n2. Defend \n3. ItemContainer \n4. Run");
             response = scan.nextInt();
         } while(response > 3 || response < 1);
 
@@ -93,12 +93,18 @@ public class Encounter {
             case 2:
                 break;
 
-            //Items
+            //ItemContainer
             case 3:
+                //List ItemContainer for player
+                System.out.println(player.listItems());
+                //Let Player Choose Item
+                player.useItem();
+
                 break;
 
             //Run
             case 4:
+                System.out.println("----\n Player Runs From Battle \n----");
                 break;
         }
     }
