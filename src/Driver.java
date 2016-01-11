@@ -14,18 +14,22 @@ public class Driver {
     }
 
     public static void runGame() {
+        Encounter encounter;
         Scanner scan = new Scanner( System.in);
 
         int commandNum; //Variable that determines state of game
 
         while(true) {
             //TODO: Enter list of options for movement at every iteration
-            System.out.print("Please enter in action>>  ");
+            System.out.print("Please enter in action >>  ");
             commandNum = scan.nextInt();
+
             switch (commandNum) {
                 case 1: //Exit Game
                     return;
                 case 2: // Join Encounter
+                    encounter = new Encounter(new Player(), new Enemy());
+                    encounter.startFight();
                     break;
             }
         }
