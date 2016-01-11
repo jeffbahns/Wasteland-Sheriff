@@ -41,7 +41,6 @@ public class Player extends Person {
             //Scan for yes or no
             choice = scanner.next().toLowerCase().charAt(0);
             //TODO: Have Items Affect Persons in Combat
-
         }while(choice != 'y' && choice != 'n');
 
     }
