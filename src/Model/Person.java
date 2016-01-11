@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+package Model;
 
 /**
  * Created by jeffbahns on 1/10/16.

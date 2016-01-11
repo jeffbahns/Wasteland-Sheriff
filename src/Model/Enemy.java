@@ -1,14 +1,9 @@
+package Model;
+
 /**
  * Created by jeffbahns on 1/10/16.
  */
-public class
-
-
-
-
-
-
-        Enemy extends Person {
+public class Enemy extends Person {
     String type;
 
 

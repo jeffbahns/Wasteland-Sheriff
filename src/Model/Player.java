@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package Model;
+
 import java.util.Scanner;
 
 /**
@@ -20,6 +21,7 @@ public class Player extends Person {
 
     public String listItems() {
         StringBuilder str = new StringBuilder();
+        str.append("---ITEMS LIST---\n");
         for(int i = 0; i < this.Items.size(); i++) {
             str.append((i + 1) + ". " + Items.get(i).name + "\n");
         }
@@ -28,15 +30,24 @@ public class Player extends Person {
     }
 
     public void useItem() {
-        System.out.println("\nPlease select an item from the list above: ");
+        char choice;
+        System.out.println("Please select an item from the list above: ");
         //Scans in index of item to get from ITEMS
         String selectedItem = Items.get(scanner.nextInt() - 1).toString();
-        //Prints out Item info
-        //TODO: Print Item info, and then ask if they want to use it
+        //Prints out Model.Item info
         System.out.println(selectedItem);
-        //TODO: Have Items Affect Persons in Combat
+        do {
+            System.out.println("Would you like to use this Item? [(y)es/(n)o]");
+            //Scan for yes or no
+            choice = scanner.next().toLowerCase().charAt(0);
+            //TODO: Have Items Affect Persons in Combat
+
+        }while(choice != 'y' && choice != 'n');
 
     }
+
+    //TODO: Special Item usage method
+    public void useItemWorldState() {}
 }
 
 

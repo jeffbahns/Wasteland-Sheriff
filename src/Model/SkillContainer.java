@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 
 /**
@@ -6,10 +8,8 @@ import java.util.ArrayList;
 public class SkillContainer {
     public ArrayList<Skill> SKILLS;
 
-    SkillContainer() {
-    }
-
-    public void castSkill(int SKILL) {
+    public SkillContainer() {
+        SKILLS = new ArrayList<>();
     }
 
     public void addSkill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST) {

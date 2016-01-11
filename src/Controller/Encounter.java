@@ -1,3 +1,8 @@
+package Controller;
+
+import Model.Enemy;
+import Model.Player;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -6,12 +11,13 @@ import java.util.Scanner;
 /**
  * Created by Corey on 1/10/16.
  */
-public class Encounter {
+public class Encounter  {
     public Player player;
     public Enemy enemy;
     public boolean turnOrder;
     private Random genny;
     private Scanner scan;
+    private CombatAction combat;
 
 
     public Encounter(Player player, Enemy enemy) {
@@ -21,7 +27,7 @@ public class Encounter {
         scan = new Scanner(System.in);
     }
 
-    public void startFight() {
+    public void startFight() throws InterruptedException{
         //Roll for who goes first
         turnOrder = determineOrder();
 
@@ -30,9 +36,11 @@ public class Encounter {
             printStats();
             if(turnOrder) {
                 playerTurn();
+                Thread.sleep(4000);
             } else {
                 //TODO: More dynamic enemy AI
                 enemyTurn();
+                Thread.sleep(4000);
             }
 
             if(isDead())
@@ -46,27 +54,27 @@ public class Encounter {
     private boolean determineOrder() {
         //Roll for player
         int pRoll = (genny.nextInt(20)+ 1) + this.player.AGI;
-        //Roll for Enemy
+        //Roll for Model.Enemy
         int eRoll = (genny.nextInt(20)+ 1) + this.enemy.AGI;
         //If Proll > Eroll player goes first
         if(pRoll > eRoll) {
-            //Player goes first
+            //Model.Player goes first
             return true;
         } else {
-            //Player goes second
+            //Model.Player goes second
             return false;
         }
     }
 
     private boolean isDead() {
-        //is Player 1 Dead?
+        //is Model.Player 1 Dead?
         if(this.player.HP <= 0) {
-            System.out.println("Player has Died");
+            System.out.println("Model.Player has Died");
             return true;
         }
-        //is Enemy Dead?
+        //is Model.Enemy Dead?
         if(this.enemy.HP <= 0) {
-            System.out.println("Enemy Has Died");
+            System.out.println("Model.Enemy Has Died");
             return true;
         }
         return false;
@@ -77,7 +85,7 @@ public class Encounter {
 
         do {
             System.out.println("Please enter your command");
-            System.out.println("1. Attack \n2. Defend \n3. ItemContainer \n4. Run");
+            System.out.println("1. Attack \n2. Defend \n3. Items \n4. Run");
             response = scan.nextInt();
         } while(response > 3 || response < 1);
 
@@ -86,25 +94,27 @@ public class Encounter {
             //Attack
             case 1:
                 System.out.println("Attacks for 1");
-                this.enemy.affectHP(-3);
+                combat = new CombatAction(0, enemy, null, null);
+
+
                 break;
 
             //Defend
             case 2:
                 break;
 
-            //ItemContainer
+            //Model.ItemContainer
             case 3:
-                //List ItemContainer for player
+                //List Items for player
                 System.out.println(player.listItems());
-                //Let Player Choose Item
+                //Let Player Choose Model Item
                 player.useItem();
 
                 break;
 
             //Run
             case 4:
-                System.out.println("----\n Player Runs From Battle \n----");
+                System.out.println("----\n Model.Player Runs From Battle \n----");
                 break;
         }
     }
