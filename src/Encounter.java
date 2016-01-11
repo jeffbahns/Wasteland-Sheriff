@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,7 +27,12 @@ public class Encounter {
 
         //Loop until end of fight;
         while(true) {
-
+            try {
+                Runtime.getRuntime().exec("cls");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            printStats();
             if(turnOrder) {
                 playerTurn();
 
@@ -38,6 +44,8 @@ public class Encounter {
             if(isDead())
                 break;
             turnOrder = !turnOrder;
+
+            System.out.println(" _____________ TURN END _____________ ");
         }
     }
 

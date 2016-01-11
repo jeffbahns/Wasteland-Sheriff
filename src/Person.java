@@ -14,8 +14,11 @@ public class Person {
     public int DEF;
     public int AGI;
 
-    Person( String name, int HP, int ATK, int DEF, int AGI ) {
+    // default constructor
+    Person( String name, int level, int HP, int ATK, int DEF, int AGI ) {
+
         this.name = name;
+        this.level = level;
         this.HP = HP;
         this.ATK = ATK;
         this.DEF = DEF;

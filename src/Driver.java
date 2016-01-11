@@ -1,3 +1,4 @@
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 
 /**
@@ -6,6 +7,7 @@ import java.util.Scanner;
 public class Driver {
 
     public static void main(String[] args) {
+
         //TODO: Have a segment to load save files
         //
         //Calls Method that begins perpetual game loop
@@ -16,6 +18,8 @@ public class Driver {
 
     // initial state of game
     public static void runGame() {
+        //Create instance of Datacontroller for sample data
+        DataController dataController = DataController.getInstance();
         Encounter encounter;
         Scanner scan = new Scanner( System.in);
 
@@ -30,7 +34,7 @@ public class Driver {
                 case 1: //Exit Game
                     return;
                 case 2: // Join Encounter
-                    encounter = new Encounter(new Player(), new Enemy());
+                    encounter = new Encounter(dataController.getPlayer(),dataController.getEnemy());
                     encounter.startFight();
                     break;
             }
