@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Enemy;
-import Model.Item;
-import Model.Player;
-import Model.Skill;
+import Model.*;
 
 import java.util.Random;
 
@@ -38,6 +35,7 @@ public class CombatAction {
         else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("ITEM")) {
             System.out.println("Item CombatAction");
             this.item = item;
+            item();
         }
         //Skill
         else {
@@ -51,6 +49,30 @@ public class CombatAction {
         int damage = (genny.nextInt(3) + 4) + player.ATK - enemy.DEF;
         System.out.println(player.name + " attacks for " + damage + " damage");
         enemy.HP-= damage;
+    }
+
+    private void item() {
+        Person target;
+        if(item.target == 'p') {
+            target = player;
+        } else {
+            target = enemy;
+        }
+
+        switch(item.statTarget) {
+            case "HP":
+                target.HP += item.statValue;
+                break;
+            case "ATK":
+                target.ATK += item.statValue;
+                break;
+            case "DEF":
+                target.DEF += item.statValue;
+                break;
+            case "AGI":
+                target.AGI += item.statValue;
+                break;
+        }
     }
 
 

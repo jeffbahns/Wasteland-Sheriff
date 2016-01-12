@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Enemy;
 import Model.Player;
+import Model.Skill;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -115,14 +116,17 @@ public class Encounter  {
             //Skills
             case 4:
                 //List skills for player
-                if(!player.SKILLS.useSkill())
+                Skill skill = player.SKILLS.useSkill();
+                if(skill == null)
                     playerTurn();
+                else
+                    System.out.println(player.name + " uses the " + skill.name + " skill!");
                 break;
 
             //Run
             case 5:
                 System.out.println("----\n Model.Player Runs From Battle \n----");
-                break;
+                return;
         }
     }
 

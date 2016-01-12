@@ -35,30 +35,40 @@ public class
     // changes HP, can be +/- change
     public void affectHP( int change ) {
         this.HP += change;
+        if(HP < 0)
+            HP = 0;
         System.out.println(name + "'s HP was affected by " + change + "!");
     }
 
     // changes ATK, can be +/- change
     public void affectATK( int change ) {
         this.ATK += change;
+        if(ATK < 0)
+            ATK = 0;
         System.out.println(name + "'s ATK was affected by " + change + "!");
     }
 
     // changes DEF, can be +/- change
     public void affectDEF( int change ) {
         this.DEF += change;
+        if(DEF < 0)
+            DEF = 0;
         System.out.println(name + "'s DEF was affected by " + change + "!");
     }
 
     // changes AGI, can be +/- change
     public void affectAGI( int change ) {
         this.AGI += change;
+        if(AGI < 0)
+            AGI = 0;
         System.out.println(name + "'s AGI was affected by " + change + "!");
     }
 
     // changes SP, can be +/- change
     public void affectSP( int change ) {
         this.SP += change;
+        if(SP < 0)
+            SP = 0;
         System.out.println(name + "'s SP was affected by " + change + "!");
     }
 

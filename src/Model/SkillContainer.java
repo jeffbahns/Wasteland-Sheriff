@@ -23,7 +23,7 @@ public class SkillContainer {
         return this.SKILLS.size();
     }
 
-    public boolean useSkill() {
+    public Skill useSkill() {
         char choice;
         print();
         System.out.println("Please select an skill from the list above: ");
@@ -33,10 +33,10 @@ public class SkillContainer {
             System.out.println("Would you like to use " + selectedSkill.name + "? [(y)es/(n)o]");
             choice = scanner.next().toLowerCase().charAt(0);
             if(choice == 'n') {
-                return false;
+                return null;
             }
         }while(choice != 'y' && choice != 'n');
-        return true;
+        return selectedSkill;
     }
 
     public void print() {
