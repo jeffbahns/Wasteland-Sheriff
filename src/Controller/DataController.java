@@ -37,7 +37,7 @@ public class DataController {
         this.mainPlayer = new Player("Corey", 1, 10, 3, 3, 3, SKILLS);
         this.enemy = new Enemy("Gobby", 1, 10, 3, 3, 3, "Goblin", SKILLS);
 
-        mainPlayer.Items.add(new Item("Horn of Eld", "Blow this and unleash the wrath of the ancient gunslinger Arthur of Eld", 'o', 'e'));
+        mainPlayer.Items.add(new Item("Horn of Eld", "Blow this and unleash the wrath of the ancient gunslinger Arthur of Eld", "HP", 1000, 'o', 'e'));
 
     }
 
