@@ -85,9 +85,9 @@ public class Encounter  {
 
         do {
             System.out.println("Please enter your command");
-            System.out.println("1. Attack \n2. Defend \n3. Items \n4. Run");
+            System.out.println("1. Attack \n" + "2. Defend \n3. Items \n4. Skills \n5. Run");
             response = scan.nextInt();
-        } while(response > 3 || response < 1);
+        } while(response > 5 || response < 1);
 
         switch (response) {
 
@@ -108,12 +108,19 @@ public class Encounter  {
                 //List Items for player
                 System.out.println(player.listItems());
                 //Let Player Choose Model Item
-                player.useItem();
+                if(!player.useItem())
+                    playerTurn();
+                break;
 
+            //Skills
+            case 4:
+                //List skills for player
+                if(!player.SKILLS.useSkill())
+                    playerTurn();
                 break;
 
             //Run
-            case 4:
+            case 5:
                 System.out.println("----\n Model.Player Runs From Battle \n----");
                 break;
         }

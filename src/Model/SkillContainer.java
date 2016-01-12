@@ -1,23 +1,42 @@
 package Model;
 
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by jeffbahns on 1/11/16.
  */
 public class SkillContainer {
     public ArrayList<Skill> SKILLS;
+    private Scanner scanner = new Scanner(System.in);
 
     public SkillContainer() {
         SKILLS = new ArrayList<>();
     }
 
     public void addSkill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST, int DURATION) {
-        SKILLS.add(new Skill(name, DESCRIPTION, TYPE, ATK, DEF, SP_COST, DURATION));
+        this.SKILLS.add(new Skill(name, DESCRIPTION, TYPE, ATK, DEF, SP_COST, DURATION));
     }
 
     public int numSkills() {
-        return SKILLS.size();
+        return this.SKILLS.size();
+    }
+
+    public boolean useSkill() {
+        char choice;
+        print();
+        System.out.println("Please select an skill from the list above: ");
+        Skill selectedSkill = SKILLS.get(scanner.nextInt() - 1);
+        selectedSkill.print();
+        do {
+            System.out.println("Would you like to use " + selectedSkill.name + "? [(y)es/(n)o]");
+            choice = scanner.next().toLowerCase().charAt(0);
+            if(choice == 'n') {
+                return false;
+            }
+        }while(choice != 'y' && choice != 'n');
+        return true;
     }
 
     public void print() {

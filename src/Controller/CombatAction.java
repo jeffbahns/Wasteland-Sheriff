@@ -48,7 +48,7 @@ public class CombatAction {
 
     private void pAttack() {
         //Basic Player Attack: Roll on Weapon Dmg + Player's Atk stat - Enemy's Def stat
-        int damage = (genny.nextInt(2) + 4) + player.ATK - enemy.ATK;
+        int damage = (genny.nextInt(3) + 4) + player.ATK - enemy.DEF;
         System.out.println(player.name + " attacks for " + damage + " damage");
         enemy.HP-= damage;
     }
