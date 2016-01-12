@@ -29,15 +29,15 @@ public class DataController {
     public void start() {
         //Sample Skills
         SkillContainer SKILLS = new SkillContainer();
-        SKILLS.addSkill("Frost Dick", "Sends a snowy frostball straight to the enemy's foreskin", 'O', 5, 0, 3, 1);
-        SKILLS.addSkill("6 Shootin' Madness", "Unload all 6 bullets of your six shooter onto any Godless sack of shit who crosses your path", 'O', 6, 0, 4, 1);
-        SKILLS.addSkill("Huddle like a bitch", "Assume fetal position and hope you don't take too much damage", 'D', 0, 2, 1, 1);
+        SKILLS.addSkill("Frost Dick", "Sends a snowy frostball straight to the enemy's foreskin", 'O', "HP", -5, 3, 1);
+        SKILLS.addSkill("6 Shootin' Madness", "Unload all 6 bullets of your six shooter onto any Godless sack of shit who crosses your path", 'O', "HP", -6, 4, 1);
+        SKILLS.addSkill("Huddle like a bitch", "Assume fetal position and hope you don't take too much damage", 'D', "DEF", 2, 1, 1);
 
         //Sample Persons
         this.mainPlayer = new Player("Corey", 1, 10, 3, 3, 3, SKILLS);
         this.enemy = new Enemy("Gobby", 1, 10, 3, 3, 3, "Goblin", SKILLS);
 
-        mainPlayer.Items.add(new Item("Horn of Eld", "Blow this and unleash the wrath of the ancient gunslinger Arthur of Eld", "HP", 1000, 'o', 'e'));
+        mainPlayer.Items.add(new Item("Horn of Eld", "Blow this and unleash the wrath of the ancient gunslinger Arthur of Eld", "HP", -1000, 'o', 'e'));
 
     }
 

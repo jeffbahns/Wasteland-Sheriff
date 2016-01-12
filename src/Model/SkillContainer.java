@@ -4,9 +4,6 @@ package Model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Created by jeffbahns on 1/11/16.
- */
 public class SkillContainer {
     public ArrayList<Skill> SKILLS;
     private Scanner scanner = new Scanner(System.in);
@@ -15,8 +12,8 @@ public class SkillContainer {
         SKILLS = new ArrayList<>();
     }
 
-    public void addSkill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST, int DURATION) {
-        this.SKILLS.add(new Skill(name, DESCRIPTION, TYPE, ATK, DEF, SP_COST, DURATION));
+    public void addSkill(String name, String DESCRIPTION, char TYPE, String STAT_TARGET, int STAT_VALUE, int SP_COST, int DURATION) {
+        this.SKILLS.add(new Skill(name, DESCRIPTION, TYPE, STAT_TARGET, STAT_VALUE, SP_COST, DURATION));
     }
 
     public int numSkills() {

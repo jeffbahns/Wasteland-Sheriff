@@ -6,7 +6,7 @@ package Model;
 public class MagicSkill extends Skill {
 
 
-    MagicSkill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST, int DURATION) {
-        super(name, DESCRIPTION, TYPE, ATK, DEF, SP_COST, DURATION);
+    MagicSkill(String name, String DESCRIPTION, char TYPE, String STAT_TARGET, int STAT_VALUE, int SP_COST, int DURATION) {
+        super(name, DESCRIPTION, TYPE, STAT_TARGET, STAT_VALUE, SP_COST, DURATION);
     }
 }

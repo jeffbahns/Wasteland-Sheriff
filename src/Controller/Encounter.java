@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Enemy;
+import Model.Item;
 import Model.Player;
 import Model.Skill;
 
@@ -9,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * Created by Corey on 1/10/16.
- */
+
 public class Encounter  {
     public Player player;
     public Enemy enemy;
@@ -94,10 +93,7 @@ public class Encounter  {
 
             //Attack
             case 1:
-                System.out.println("Attacks for 1");
                 combat = new CombatAction(0, enemy, null, null);
-
-
                 break;
 
             //Defend
@@ -106,11 +102,14 @@ public class Encounter  {
 
             //Model.ItemContainer
             case 3:
+                Item item;
                 //List Items for player
                 System.out.println(player.listItems());
                 //Let Player Choose Model Item
-                if(!player.useItem())
+                if((item = player.useItem()) == null)
                     playerTurn();
+                else
+                    combat = new CombatAction(4, enemy, item, null);
                 break;
 
             //Skills
@@ -120,12 +119,12 @@ public class Encounter  {
                 if(skill == null)
                     playerTurn();
                 else
-                    System.out.println(player.name + " uses the " + skill.name + " skill!");
+                    combat = new CombatAction(5, enemy, null, skill);
                 break;
 
             //Run
             case 5:
-                System.out.println("----\n Model.Player Runs From Battle \n----");
+                combat = new CombatAction(6, null, null, null);
                 return;
         }
     }

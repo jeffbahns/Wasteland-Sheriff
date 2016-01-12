@@ -1,8 +1,6 @@
 package Model;
 
-/**
- * Created by jeffbahns on 1/10/16.
- */
+
 
 // This is the base class for NPC's, enemies, etc
 public class

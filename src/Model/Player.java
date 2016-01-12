@@ -29,11 +29,12 @@ public class Player extends Person {
         return str.toString();
     }
 
-    public boolean useItem() {
+    public Item useItem() {
         char choice;
         System.out.println("Please select an item from the list above: ");
         //Scans in index of item to get from ITEMS
-        String selectedItem = Items.get(scanner.nextInt() - 1).toString();
+        int selection = scanner.nextInt() - 1;
+        String selectedItem = Items.get(selection).toString();
         //Prints out Model.Item info
         System.out.println(selectedItem);
         do {
@@ -43,10 +44,10 @@ public class Player extends Person {
             //TODO: Have Items Affect Persons in Combat
 
             if(choice == 'n') {
-                return false;
+                return null;
             }
         }while(choice != 'y' && choice != 'n');
-        return true;
+        return Items.get(selection);
     }
 
     //TODO: Special Item usage method

@@ -1,23 +1,20 @@
 package Model;
 
-/**
- * Created by jeffbahns on 1/11/16.
- */
 public class Skill {
     public String name;
     public String DESCRIPTION;
     public char TYPE;
-    public int ATK;
-    public int DEF;
+    public String STAT_TARGET;
+    public int STAT_VALUE;
     public int SP_COST;
     public int DURATION;
 
-    Skill(String name, String DESCRIPTION, char TYPE, int ATK, int DEF, int SP_COST, int duration) {
+    Skill(String name, String DESCRIPTION, char TYPE, String STAT_TARGET, int STAT_VALUE, int SP_COST, int duration) {
         this.name = name;
         this.DESCRIPTION = DESCRIPTION;
         this.TYPE = TYPE;
-        this.ATK = ATK;
-        this.DEF = DEF;
+        this.STAT_TARGET = STAT_TARGET;
+        this.STAT_VALUE = STAT_VALUE;
         this.SP_COST = SP_COST;
     }
 
@@ -31,8 +28,8 @@ public class Skill {
         System.out.println("- - -");
         System.out.println("DESCRIPTION : " + DESCRIPTION);
         System.out.println("TYPE : " + TYPE);
-        System.out.println("ATK : " + ATK);
-        System.out.println("DEF : " + DEF);
+        System.out.println("STAT TARGET " + STAT_TARGET);
+        System.out.println("STAT_VALUE " + STAT_VALUE);
         System.out.println("SP : " + SP_COST);
         System.out.println("---------");
     }

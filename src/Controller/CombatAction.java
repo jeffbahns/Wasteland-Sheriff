@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Corey on 1/11/16.
  */
 public class CombatAction {
-    final String[] COMBAT_ACTION_TYPE = {"P_ATTACK", "E_ATTACK", "P_DEFEND", "E_DEFEND", "ITEM", "P_SKILL", "E_SKILL"};
+    final String[] COMBAT_ACTION_TYPE = {"P_ATTACK", "E_ATTACK", "P_DEFEND", "E_DEFEND", "ITEM", "P_SKILL", "E_SKILL", "RUN"};
     DataController dataController = DataController.getInstance();
     Player player = dataController.getPlayer();
     Enemy enemy;
@@ -38,9 +38,14 @@ public class CombatAction {
             item();
         }
         //Skill
-        else {
+        else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("P_SKILL")) {
             System.out.println("Skill CombatAction");
             this.skill = skill;
+            skill();
+        }
+        //Run
+        else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("RUN")) {
+            run();
         }
     }
 
@@ -61,20 +66,46 @@ public class CombatAction {
 
         switch(item.statTarget) {
             case "HP":
-                target.HP += item.statValue;
+                target.affectHP(item.statValue);
                 break;
             case "ATK":
-                target.ATK += item.statValue;
+                target.affectATK(item.statValue);
                 break;
             case "DEF":
-                target.DEF += item.statValue;
+                target.affectDEF(item.statValue);
                 break;
             case "AGI":
-                target.AGI += item.statValue;
+                target.affectAGI(item.statValue);
                 break;
         }
     }
 
+    private void skill() {
+        Person target;
+        if(skill.TYPE == 'O') {
+            target = enemy;
+        } else {
+            target = enemy;
+        }
+        System.out.println("Casting " + skill.name + " at " + target.name);
+        switch(skill.STAT_TARGET) {
+            case "HP":
+                target.affectHP(skill.STAT_VALUE);
+                break;
+            case "ATK":
+                target.affectATK(skill.STAT_VALUE);
+                break;
+            case "DEF":
+                target.affectDEF(skill.STAT_VALUE);
+                break;
+            case "AGI":
+                target.affectAGI(skill.STAT_VALUE);
+                break;
+        }
+    }
 
+    private void run() {
+
+    }
 
 }
