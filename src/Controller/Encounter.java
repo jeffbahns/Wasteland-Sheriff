@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Enemy;
+import Model.Item;
 import Model.Player;
 
 import java.io.IOException;
@@ -96,7 +97,6 @@ public class Encounter  {
                 System.out.println("Attacks for 1");
                 combat = new CombatAction(0, enemy, null, null);
 
-
                 break;
 
             //Defend
@@ -105,11 +105,14 @@ public class Encounter  {
 
             //Model.ItemContainer
             case 3:
+                Item item;
                 //List Items for player
                 System.out.println(player.listItems());
                 //Let Player Choose Model Item
-                if(!player.useItem())
+                if((item = player.useItem()) == null)
                     playerTurn();
+                else
+                combat = new CombatAction(4, enemy, item, null);
                 break;
 
             //Skills
@@ -122,7 +125,8 @@ public class Encounter  {
             //Run
             case 5:
                 System.out.println("----\n Model.Player Runs From Battle \n----");
-                break;
+                return;
+
         }
     }
 
