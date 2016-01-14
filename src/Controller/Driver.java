@@ -2,7 +2,6 @@ package Controller;
 
 import Controller.DataController;
 import Controller.Encounter;
-
 import java.util.Scanner;
 
 /**

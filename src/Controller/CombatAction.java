@@ -85,7 +85,7 @@ public class CombatAction {
         if(skill.TYPE == 'O') {
             target = enemy;
         } else {
-            target = enemy;
+            target = player;
         }
         System.out.println("Casting " + skill.name + " at " + target.name);
         switch(skill.STAT_TARGET) {
