@@ -112,6 +112,7 @@ public class CombatAction {
         } else {
             System.out.println(player.name + "casts " + skill.name + " on self");
             enemy.addToActiveEffects(skill.ae);
+
         }
 
     }
