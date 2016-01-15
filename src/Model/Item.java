@@ -11,11 +11,16 @@ public class Item {
     public String statTarget;
     //Amount statTarget affects stat for
     public int statValue;
+    //Duration of Effect
+    public int duration;
     public char type;
     public char target;
     public int quantity;
+    public boolean eot;
 
-    public Item(String name, String description, String statTarget, int statValue, char type, char target) {
+    public ActiveEffect ae;
+
+    public Item(String name, String description, String statTarget, int statValue, char type, char target, int duration, boolean eot) {
         this.name = name;
         this.description = description;
         this.statTarget = statTarget;
@@ -23,6 +28,8 @@ public class Item {
         this.type = type;
         this.target = target;
         this.quantity = 1;
+        this.duration = duration;
+        this.ae = new ActiveEffect(statValue, statTarget, duration, eot);
     }
 
     public String toString() {

@@ -27,8 +27,17 @@ public class CombatAction {
             //call method for attack
             pAttack();
         }
-        //Defense
-        else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("DEFENCE")) {
+        if(COMBAT_ACTION_TYPE[typeOfCombat].equals("E_ATTACK")) {
+            System.out.println("Attack CombatAction");
+            //call method for attack
+            eAttack();
+        }
+        //P_Defense
+        else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("P_DEFEND")) {
+            System.out.println("Defense CombatAction");
+        }
+        //E_Defense
+        else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("P_DEFEND")) {
             System.out.println("Defense CombatAction");
         }
         //Item
@@ -37,11 +46,16 @@ public class CombatAction {
             this.item = item;
             item();
         }
-        //Skill
+        //pSkill
         else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("P_SKILL")) {
             System.out.println("Skill CombatAction");
             this.skill = skill;
-            skill();
+            pSkill();
+        }//eSkill
+        else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("E_SKILL")) {
+            System.out.println("Skill CombatAction");
+            this.skill = skill;
+            eSkill();
         }
         //Run
         else if(COMBAT_ACTION_TYPE[typeOfCombat].equals("RUN")) {
@@ -56,52 +70,50 @@ public class CombatAction {
         enemy.HP-= damage;
     }
 
+    private void eAttack() {
+        //Basic Enemy Roll
+        int damage = (genny.nextInt(3) + 4) + player.ATK - enemy.DEF;
+        System.out.println(enemy.name + " attacks for " + damage + " damage");
+        player.HP-= damage;
+    }
+
+    private void pDefend() {
+
+
+
+    }
+
+    private void eDefend() {
+
+    }
+
     private void item() {
         Person target;
-        if(item.target == 'p') {
-            target = player;
+        if (item.target == 'p') {
+            player.addToActiveEffects(item.ae);
         } else {
-            target = enemy;
+            enemy.addToActiveEffects(item.ae);
         }
-
-        switch(item.statTarget) {
-            case "HP":
-                target.affectHP(item.statValue);
-                break;
-            case "ATK":
-                target.affectATK(item.statValue);
-                break;
-            case "DEF":
-                target.affectDEF(item.statValue);
-                break;
-            case "AGI":
-                target.affectAGI(item.statValue);
-                break;
+    }
+    private void pSkill() {
+        if(skill.TYPE == 'O') {
+            System.out.println("Casting " + skill.name + " at " + enemy.name);
+            enemy.addToActiveEffects(skill.ae);
+        } else {
+            System.out.println(player.name + "casts " + skill.name + " on self");
+            player.addToActiveEffects(skill.ae);
         }
     }
 
-    private void skill() {
-        Person target;
+    private void eSkill() {
         if(skill.TYPE == 'O') {
-            target = enemy;
+            System.out.println("Casting " + skill.name + " at " + player.name);
+            player.addToActiveEffects(skill.ae);
         } else {
-            target = enemy;
+            System.out.println(player.name + "casts " + skill.name + " on self");
+            enemy.addToActiveEffects(skill.ae);
         }
-        System.out.println("Casting " + skill.name + " at " + target.name);
-        switch(skill.STAT_TARGET) {
-            case "HP":
-                target.affectHP(skill.STAT_VALUE);
-                break;
-            case "ATK":
-                target.affectATK(skill.STAT_VALUE);
-                break;
-            case "DEF":
-                target.affectDEF(skill.STAT_VALUE);
-                break;
-            case "AGI":
-                target.affectAGI(skill.STAT_VALUE);
-                break;
-        }
+
     }
 
     private void run() {

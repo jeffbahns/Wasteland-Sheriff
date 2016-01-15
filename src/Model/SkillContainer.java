@@ -12,8 +12,8 @@ public class SkillContainer {
         SKILLS = new ArrayList<>();
     }
 
-    public void addSkill(String name, String DESCRIPTION, char TYPE, String STAT_TARGET, int STAT_VALUE, int SP_COST, int DURATION) {
-        this.SKILLS.add(new Skill(name, DESCRIPTION, TYPE, STAT_TARGET, STAT_VALUE, SP_COST, DURATION));
+    public void addSkill(String name, String DESCRIPTION, char TYPE, String STAT_TARGET, int STAT_VALUE, int SP_COST, int DURATION, boolean EOT) {
+        this.SKILLS.add(new Skill(name, DESCRIPTION, TYPE, STAT_TARGET, STAT_VALUE, SP_COST, DURATION, EOT));
     }
 
     public int numSkills() {

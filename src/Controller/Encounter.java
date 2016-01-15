@@ -127,6 +127,9 @@ public class Encounter  {
                 combat = new CombatAction(6, null, null, null);
                 return;
         }
+
+        //Put update() here
+        player.updateActiveEffects();
     }
 
     private void enemyTurn() {

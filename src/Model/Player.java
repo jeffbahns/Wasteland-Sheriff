@@ -10,6 +10,7 @@ public class Player extends Person {
     private Scanner scanner = new Scanner(System.in);
 
 
+
     public Player() {
         super("Corey",1, 1, 1, 1, 1, new SkillContainer());
     }
