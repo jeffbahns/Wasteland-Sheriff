@@ -38,6 +38,7 @@ public class DataController {
         this.enemy = new Enemy("Gobby", 1, 10, 3, 3, 3, "Goblin", SKILLS);
 
         mainPlayer.Items.add(new Item("Horn of Eld", "Blow this and unleash the wrath of the ancient gunslinger Arthur of Eld", "HP", -1000, 'o', 'e', 0, true));
+        mainPlayer.Items.add(new Item("Dirty Bomb", "Deals Poison damage to target over 3 turns", "HP", -1, 'o', 'e', 3, true));
 
     }
 

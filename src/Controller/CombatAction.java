@@ -15,6 +15,7 @@ public class CombatAction {
     Item item;
     Skill skill;
     Random genny;
+    ActiveEffect aeDef;
 
 
     public CombatAction(int typeOfCombat, Enemy enemy, Item item, Skill skill) {
@@ -78,13 +79,15 @@ public class CombatAction {
     }
 
     private void pDefend() {
-
-
-
+        //ActiveEffect specifiacally for Defending
+        aeDef = new ActiveEffect((player.DEF/2), "DEF", 1, false);
+        player.addToActiveEffects(aeDef);
     }
 
     private void eDefend() {
-
+        //ActiveEffect specifiacally for Defending
+        aeDef = new ActiveEffect((player.DEF/2), "DEF", 1, false);
+        enemy.addToActiveEffects(aeDef);
     }
 
     private void item() {

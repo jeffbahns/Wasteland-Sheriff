@@ -27,8 +27,10 @@ public class
 
     //For handling active effects on PLayers/NPC's
     private PriorityQueue<ActiveEffect> activeEffects;
+    private PriorityQueue<ActiveEffect> tempActiveEffects;
     //Iterator for activeEffects
     Iterator<ActiveEffect> activeEffectIterator;
+    Iterator<ActiveEffect> tempActiveEffectIterator;
     //Preconstructed activeEffect to reuse
     ActiveEffect ae;
 
@@ -50,8 +52,10 @@ public class
         this.SP = this.MAX_SP;
         //Will be contacted by CombatAction when a Skill or Item is used to affect the stats of Player/NPC
         ActiveEffectComparator comp = new ActiveEffectComparator();
-        this.activeEffects = new PriorityQueue<ActiveEffect>(10, comp);
+        this.activeEffects = new PriorityQueue<>(10, comp);
+        this.tempActiveEffects = activeEffects;
         this.activeEffectIterator = activeEffects.iterator();
+        this.tempActiveEffectIterator = tempActiveEffects.iterator();
         System.out.println("A person was created");
     }
 
@@ -110,15 +114,20 @@ public class
 
     //Updates all information for character invovled
     public void updateActiveEffects() {
-        while(activeEffectIterator.hasNext()) {
-            ae = activeEffectIterator.next();
-            if(ae.duration == 1) {
-               removeFromActiveEffects(ae);
-            } else {
-                if (ae.eot)
-                    affectStat(ae, true);
+        if(this.activeEffects.size() != 0) {
+            ActiveEffect tempAE;
+            while (tempActiveEffectIterator.hasNext()) {
+                //Gets ConcurrentModificationException
+                tempAE = tempActiveEffectIterator.next();
+                this.ae = getAEForID(tempAE.id);
+                if (tempAE.duration == 1) {
+                    removeFromActiveEffects(ae);
+                } else {
+                    if (tempAE.eot)
+                        affectStat(ae, true);
                     // Call affect Stat
                     ae.duration--;
+                }
             }
         }
     }
@@ -132,8 +141,6 @@ public class
         if(ae.duration != 0) {
             activeEffects.add(ae);
         }
-
-
     }
 
     //removeFromActiveEffects
@@ -157,30 +164,42 @@ public class
     public void affectStat(ActiveEffect ae, boolean effect /*Is the change adding the effect or removing it*/) {
         switch(ae.statTarget) {
             case "HP":
-                this.HP += ae.statValue;
+                this.HP += effect ? ae.statValue : -ae.statValue;
                 if(HP < 0)
                     HP = 0;
                 System.out.println(name + "'s HP was affected by " + ae.statValue + "!");
                 break;
             case "ATK":
-                this.ATK += ae.statValue;
+                this.ATK += effect ? ae.statValue : -ae.statValue;
                 if(ATK < 0)
                     ATK = 0;
                 System.out.println(name + "'s HP was affected by " + ae.statValue + "!");
                 break;
             case "DEF":
-                this.DEF += ae.statValue;
+                this.DEF += effect ? ae.statValue : -ae.statValue;
                 if(DEF < 0)
                     DEF = 0;
                 System.out.println(name + "'s HP was affected by " + ae.statValue + "!");
                 break;
             case "AGI":
-                this.AGI += ae.statValue;
+                this.AGI += effect ? ae.statValue : -ae.statValue;
                 if(AGI < 0)
                     AGI = 0;
                 System.out.println(name + "'s HP was affected by " + ae.statValue + "!");
                 break;
         }
+    }
+
+    public ActiveEffect getAEForID(String id) {
+        ActiveEffect tempAe;
+        while (activeEffectIterator.hasNext()) {
+            tempAe = activeEffectIterator.next();
+            if(id.equals(tempAe.id)){
+                return tempAe;
+            }
+        }
+
+        return null;
     }
 
 

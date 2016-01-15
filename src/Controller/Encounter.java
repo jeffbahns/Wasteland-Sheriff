@@ -134,6 +134,7 @@ public class Encounter  {
 
     private void enemyTurn() {
         this.player.affectHP(-1);
+        enemy.updateActiveEffects();
     }
 
     private void printStats() {
